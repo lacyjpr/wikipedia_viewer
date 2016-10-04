@@ -1,5 +1,5 @@
-$("#form-container").submit(function(e) {
-	e.preventDefault();
+$("#form-container").submit(function(event) {
+	event.preventDefault();
 	var searchTerm = $("#searchText").val();
 
 	var wikiUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchTerm + "&format=json&callback=wikiCallback";
