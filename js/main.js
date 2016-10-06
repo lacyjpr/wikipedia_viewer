@@ -18,7 +18,10 @@ $("#form-container").submit(function(event) {
 			for (var i = 0; i < response[1].length; i++) {
 				$("#results").append('<div class="col-md-6 col-md-offset-3 result"><a href=' + response[3][i] + ' target="blank_">' + response[1][i] + '</a><p class="description">' + response[2][i] + '</div');
 			}
-		}
+		},
+		error: function() {
+			$("results").html("Error encountered. Please try again later!");
+		}  
 	});
 });
 
