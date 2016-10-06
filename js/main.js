@@ -1,7 +1,6 @@
 $("#form-container").submit(function(event) {
 	event.preventDefault();
 	var searchTerm = $("#searchText").val();
-//"https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchTerm + "&format=json&callback?";
 	var wikiUrl = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + searchTerm + "&format=json";
 
 	$.ajax({
@@ -12,11 +11,10 @@ $("#form-container").submit(function(event) {
 			"Api-User-Agent": "Example/1.0"
 		},
 		success: function(response){
-			console.log(response);
 			// Remove previous results
 			$("#results").html("");
 			// Loop through response array and append results
-			if (response.query.search.length === 0) {
+			if (response.hasOwnProperty("error")) {
 				$("#results").append('<div class="text-center result"><h4>No Results Found</h4></div>');
 			} else {
 				for (var i = 0; i < response.query.search.length; i++) {
