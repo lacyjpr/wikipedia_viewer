@@ -1,0 +1,4 @@
+.form-inline .form-group .form-control {
+	width: auto;
+	display: inline-block;
+}
