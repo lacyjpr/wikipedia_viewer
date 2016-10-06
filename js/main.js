@@ -3,7 +3,6 @@ $("#form-container").submit(function(event) {
 	var searchTerm = $("#searchText").val();
 
 	var wikiUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchTerm + "&format=json&callback=wikiCallback";
-	console.log(wikiUrl);
 
 	$.ajax({
 		type: "GET",
@@ -13,7 +12,6 @@ $("#form-container").submit(function(event) {
 			"Api-User-Agent": "Example/1.0"
 		},
 		success: function(response){
-			console.log(response);
 			// Remove previous results
 			$("#results").html("");
 			// Loop through response array and append results
