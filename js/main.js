@@ -14,6 +14,12 @@ $("#form-container").submit(function(event) {
 		},
 		success: function(response){
 			console.log(response);
+			// Remove previous results
+			$("#results").html("");
+			// Loop through response array and append results
+			for (var i = 0; i < response[1].length; i++) {
+				$("#results").append('<div class="col-md-6 col-md-offset-3 result"><a href=' + response[3][i] + ' target="blank_">' + response[1][i] + '</a><p class="description">' + response[2][i] + '</div');
+			}
 		}
 	});
 });
