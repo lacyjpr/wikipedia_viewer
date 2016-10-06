@@ -11,10 +11,13 @@ $("#form-container").submit(function(event) {
 			"Api-User-Agent": "Example/1.0"
 		},
 		success: function(response){
+			console.log(response)
 			// Remove previous results
 			$("#results").html("");
 			// Loop through response array and append results
 			if (response.hasOwnProperty("error")) {
+				$("#results").append('<div class="text-center result"><h4>No Results Found</h4></div>');
+			} else if (response.query.search.length === 0){
 				$("#results").append('<div class="text-center result"><h4>No Results Found</h4></div>');
 			} else {
 				for (var i = 0; i < response.query.search.length; i++) {
