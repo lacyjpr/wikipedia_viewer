@@ -16,7 +16,7 @@ $("#form-container").submit(function(event) {
 			$("#results").html("");
 			// Loop through response array and append results
 			for (var i = 0; i < response[1].length; i++) {
-				$("#results").append('<div class="col-md-6 col-md-offset-3 result"><a href=' + response[3][i] + ' target="blank_">' + response[1][i] + '</a><p class="description">' + response[2][i] + '</div');
+				$("#results").append('<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 result"><a href=' + response[3][i] + ' target="blank_">' + response[1][i] + '</a><p class="description">' + response[2][i] + '</div');
 			}
 		},
 		error: function() {
