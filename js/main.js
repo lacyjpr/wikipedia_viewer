@@ -27,7 +27,7 @@ $("#form-container").submit(function(event) {
 					var endUrl = result[i].title.replace(/ /g, "_");
 					var title = result[i].title;
 					var snippet = result[i].snippet;
-					$("#results").append('<a href=http://en.wikipedia.org/wiki/' + endUrl + ' target="blank_"><div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 result"><h4>' + title + '</h4><p class="description">' + snippet + '</div></a>');
+					$("#results").append('<a href=http://en.wikipedia.org/wiki/' + endUrl + ' target="blank_"><div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 result"><h4>' + title + '</h4><p class="description"><p>' + snippet + '<p></div></a>');
 				}
 			}
 		},
