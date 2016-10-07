@@ -1,4 +1,22 @@
 .form-inline .form-group .form-control {
 	width: auto;
 	display: inline-block;
+	border-radius: 0;
+}
+
+.searchBox {
+	font-family: 'Linux Libertine','Hoefler Text',Georgia,'Times New Roman',Times,serif;;
+}
+
+.btn {
+	border-radius: 0;
+}
+
+.result {
+	background-color: #e7e7e7;
+	margin-top: 10px;
+}
+
+.result:hover {
+	border-left: 5px solid #286090;
 }
