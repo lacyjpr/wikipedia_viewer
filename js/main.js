@@ -1,5 +1,10 @@
-$("#form-container").submit(function(event) {
+$("#form-container").keyup(function(event) {
 	event.preventDefault();
+	// Exclude the backspace, delete & downarrow keys from triggering ajax
+	if (event.which === 8 || event.which === 46 || event.which === 40){
+		return false;
+	}
+
 	var searchTerm = $("#searchText").val();
 	var wikiUrl = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + searchTerm + "&format=json";
 
@@ -35,6 +40,9 @@ $("#form-container").submit(function(event) {
 		}  
 	});
 });
-
-
+$("#form-container").submit(function(event) {
+  event.preventDefault();
+  $("#form-container").keyup();
+});
+//};
 
