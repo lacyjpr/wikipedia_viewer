@@ -13,15 +13,12 @@ $("#searchText").autocomplete({
 	// Submit on select credit http://stackoverflow.com/questions/2198539/jquery-autocomplete-submit-form-on-selection
 	select: function(event, ui) { 
 		$("#searchText").val(ui.item.value);
-		$("#form-container").submit(); }
+		$("#form-container").submit(); 
+	}
 });
 
 $("#form-container").submit(function(event) {
 	event.preventDefault();
-	// Exclude the backspace, delete & downarrow keys from triggering ajax
-	//if (event.which === 8 || event.which === 46 || event.which === 40){
-		//return false;
-	//}
 
 	var searchTerm = $("#searchText").val();
 	var wikiUrl = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + searchTerm + "&format=json";
