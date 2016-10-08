@@ -10,6 +10,7 @@ $("#searchText").autocomplete({
 			},
 		});
 	},
+	// Submit on select credit http://stackoverflow.com/questions/2198539/jquery-autocomplete-submit-form-on-selection
 	select: function(event, ui) { 
 		$("#searchText").val(ui.item.value);
 		$("#form-container").submit(); }
