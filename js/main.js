@@ -15,7 +15,17 @@ $("#searchText").autocomplete({
 		$("#searchText").val(ui.item.value);
 		$("#form-container").submit(); 
 	}
+
 });
+// Close autocomplete dropdown on enter	http://stackoverflow.com/questions/9602395/jquery-ui-autocomplete-hide-list-after-hiting-enter
+$("#searchText").keypress(function(e){ 
+	if (!e) e = window.event;   
+	if (e.keyCode == "13"){
+		$("#searchText").autocomplete("close");
+		$("#form-container").submit();
+		return false;
+	}
+  });
 
 $("#form-container").submit(function(event) {
 	event.preventDefault();
@@ -30,14 +40,14 @@ $("#form-container").submit(function(event) {
 		headers: {
 			"Api-User-Agent": "Example/1.0"
 		},
-		success: function(response){
+		success: function(response) {
 			// Remove previous results
 			$("#results").html("");
 			// Check for errors
 			if (response.hasOwnProperty("error")) {
 				$("#results").append('<div class="text-center col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 result"><h4>Error encountered. Please try again later!</h4></div>');
 			// Check for no results
-			} else if (response.query.search.length === 0){
+			} else if (response.query.search.length === 0) {
 				$("#results").append('<div class="text-center col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 result"><h4>No Results Found</h4></div>');
 			} else {
 				var result = response.query.search;
