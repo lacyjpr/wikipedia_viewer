@@ -1,9 +1,26 @@
-$("#form-container").keyup(function(event) {
+// Autocomplete adapted from http://codepen.io/edkahara/pen/ZpvXxB
+$("#searchText").autocomplete({
+	source: function(request, response) {
+		$.ajax({
+			type: "GET",
+			url: "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + request.term + "&format=json&callback?",
+			dataType: "jsonp",
+			success: function(data) {
+				response(data[1]);
+			},
+		});
+	},
+	select: function(event, ui) { 
+		$("#searchText").val(ui.item.value);
+		$("#form-container").submit(); }
+});
+
+$("#form-container").submit(function(event) {
 	event.preventDefault();
 	// Exclude the backspace, delete & downarrow keys from triggering ajax
-	if (event.which === 8 || event.which === 46 || event.which === 40){
-		return false;
-	}
+	//if (event.which === 8 || event.which === 46 || event.which === 40){
+		//return false;
+	//}
 
 	var searchTerm = $("#searchText").val();
 	var wikiUrl = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + searchTerm + "&format=json";
@@ -16,6 +33,7 @@ $("#form-container").keyup(function(event) {
 			"Api-User-Agent": "Example/1.0"
 		},
 		success: function(response){
+			console.log(response)
 			// Remove previous results
 			$("#results").html("");
 			// Check for errors
@@ -40,9 +58,3 @@ $("#form-container").keyup(function(event) {
 		}  
 	});
 });
-$("#form-container").submit(function(event) {
-  event.preventDefault();
-  $("#form-container").keyup();
-});
-//};
-
