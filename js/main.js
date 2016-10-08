@@ -34,7 +34,6 @@ $("#form-container").submit(function(event) {
 			"Api-User-Agent": "Example/1.0"
 		},
 		success: function(response){
-			console.log(response)
 			// Remove previous results
 			$("#results").html("");
 			// Check for errors
