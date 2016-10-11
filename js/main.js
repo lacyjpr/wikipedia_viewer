@@ -12,7 +12,7 @@ $("#searchText").autocomplete({
 	},
 	// Submit on select credit http://stackoverflow.com/questions/2198539/jquery-autocomplete-submit-form-on-selection
 	select: function(event, ui) { 
-		$("#searchText").val(ui.item.value);
+		$("#searchText").val(ui.item.value); 
 		$("#form-container").submit(); 
 	}
 
@@ -27,6 +27,7 @@ $("#searchText").keypress(function(e){
 	}
   });
 
+// On submit, query the wikipedia api
 $("#form-container").submit(function(event) {
 	event.preventDefault();
 
